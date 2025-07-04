@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Welcome | VibeChat</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(270deg,
+        #ffccd5, #fff9c4, #ffe0b2, #b2fef7,
+        #a7ffeb, #e1bee7, #ffccd5);
+      background-size: 1600% 1600%;
+      animation: animateBG 20s ease infinite;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      color: #333;
+    }
+
+    @keyframes animateBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .welcome-container {
+      text-align: center;
+      padding: 45px;
+      width: 380px;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.4);
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(16px);
+    }
+
+    h1 {
+      font-size: 2.6em;
+      margin-bottom: 14px;
+      color: #222;
+      text-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
+      white-space: nowrap;
+    }
+
+    p {
+      font-size: 1.15em;
+      color: #444;
+      margin-bottom: 26px;
+    }
+
+    a {
+      display: inline-block;
+      margin: 12px 10px;
+      padding: 13px 26px;
+      background: linear-gradient(to right, #fca311, #ff4e50);
+      color: white;
+      text-decoration: none;
+      border-radius: 32px;
+      font-size: 1em;
+      font-weight: bold;
+      box-shadow: 0 0 12px white;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    a:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 24px white;
+    }
+  </style>
+</head>
+<body>
+  <div class="welcome-container">
+    <h1>Welcome to VibeChat</h1>
+    <p>Connect & Chat with your friends</p>
+    <a href="register.html">Register</a>
+    <a href="login.html">Login</a>
+  </div>
+</body>
+</html>

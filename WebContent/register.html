@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Register | VibeChat</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(270deg,
+        #ffccd5, #fff9c4, #ffe0b2, #b2fef7,
+        #a7ffeb, #e1bee7, #ffccd5);
+      background-size: 1600% 1600%;
+      animation: animateBG 20s ease infinite;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      color: #222;
+    }
+
+    @keyframes animateBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .register-container {
+      text-align: center;
+      padding: 35px;
+      width: 380px;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.45);
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(14px);
+    }
+
+    h2 {
+      font-size: 2em;
+      margin-bottom: 20px;
+      color: #222;
+      text-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      padding: 12px;
+      width: 90%;
+      margin: 10px 0;
+      border: none;
+      border-radius: 12px;
+      font-size: 1em;
+      background: rgba(255, 255, 255, 0.95);
+      color: #222;
+      box-shadow: 0 0 6px rgba(255, 255, 255, 0.6);
+    }
+
+    input::placeholder {
+      color: #555;
+    }
+
+    .profile-pic-container {
+      margin: 15px auto;
+      position: relative;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 3px solid white;
+      box-shadow: 0 0 15px white;
+      cursor: pointer;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    .profile-pic-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: none;
+    }
+
+    .profile-pic-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 0.95em;
+      color: white;
+      text-align: center;
+      pointer-events: none;
+    }
+
+    input[type="file"] {
+      display: none;
+    }
+
+    button {
+      background: linear-gradient(to right, #fca311, #ff4e50);
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 30px;
+      font-size: 1em;
+      font-weight: bold;
+      margin-top: 10px;
+      box-shadow: 0 0 15px white;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px white;
+    }
+
+    .login-link {
+      display: block;
+      margin-top: 18px;
+      color: #444;
+      text-decoration: underline;
+      font-size: 0.9em;
+    }
+
+    .login-link:hover {
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+  <div class="register-container">
+    <h2>Create your VibeChat Account</h2>
+    <form method="post" action="RegisterServlet" enctype="multipart/form-data">
+      
+      <label for="photo">
+        <div class="profile-pic-container" id="previewContainer">
+          <div class="profile-pic-text" id="previewText">Select<br>Profile Photo</div>
+          <img id="previewImage" alt="Profile Preview" />
+        </div>
+      </label>
+      
+      <input type="file" name="photo" id="photo" accept="image/*" required onchange="loadPreview(this)" />
+
+      <input type="text" name="username" placeholder="Enter Username" required /><br />
+      <input type="password" name="password" placeholder="Enter Password" required /><br />
+      <button type="submit">Register</button>
+    </form>
+    <a class="login-link" href="login.html">Already have an account? Login</a>
+  </div>
+
+  <script>
+    function loadPreview(input) {
+      const previewImage = document.getElementById('previewImage');
+      const previewText = document.getElementById('previewText');
+
+      if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          previewImage.src = e.target.result;
+          previewImage.style.display = 'block';
+          previewText.style.display = 'none';
+        };
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+  </script>
+</body>
+</html>
